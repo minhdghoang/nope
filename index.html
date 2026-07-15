@@ -2,50 +2,93 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tra cứu phụ huynh 9A8-THCS Gia Cẩm</title>
 <style>
-body{
+/* Căn giữa toàn bộ trang theo cả chiều dọc và chiều ngang */
+html, body {
+    height: 100%;
+    margin: 0;
+}
+body {
     font-family: Arial, sans-serif;
-    margin:40px;
-    background:#f5f5f5;
+    background: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-input{
-    width:350px;
-    padding:10px;
-    font-size:16px;
+/* Khung chứa nội dung được bo góc, đổ bóng và căn giữa */
+.container {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    text-align: center;
+    max-width: 450px;
+    width: 90%;
 }
-button{
-    padding:10px 20px;
-    font-size:16px;
-    cursor:pointer;
-    margin-left:10px;
+h2 {
+    margin-top: 0;
+    color: #333;
 }
 .huong-dan {
     color: #666;
     font-style: italic;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+/* Ô nhập liệu */
+input {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
     margin-bottom: 15px;
 }
-#kq{
-    margin-top:20px;
-    font-size:20px;
-    color:blue;
-    white-space:pre-wrap;
+/* Nút bấm */
+button {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+button:hover {
+    background-color: #0056b3;
+}
+/* Kết quả hiển thị */
+#kq {
+    margin-top: 25px;
+    font-size: 18px;
+    color: #155724;
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    padding: 15px;
+    border-radius: 5px;
+    white-space: pre-wrap;
+    text-align: left;
+    display: none; /* Ẩn đi khi chưa tìm kiếm */
 }
 </style>
-
 </head>
-
 <body>
 
-<h2>Tra cứu tên phụ huynh 9A8</h2>
-<!-- Đưa dòng lưu ý xuống đây để người dùng dễ nhìn thấy -->
-<p class="huong-dan">Lưu ý: Nhập tên không dấu (Ví dụ: Nguyen Van A)</p>
-
-<!-- Thêm onkeydown để bấm Enter là tra cứu được luôn -->
-<input type="text" id="ten" placeholder="Nhập họ và tên học sinh..." onkeydown="if(event.key === 'Enter') tim()">
-<button onclick="tim()">Tra cứu</button>
-
-<div id="kq"></div>
+<div class="container">
+    <h2>Tra cứu tên phụ huynh 9A8</h2>
+    <p class="huong-dan">Lưu ý: Nhập tên không dấu (Ví dụ: nguyen van a)</p>
+    
+    <input type="text" id="ten" placeholder="Nhập họ và tên học sinh..." onkeydown="if(event.key === 'Enter') tim()">
+    <button onclick="tim()">Tra cứu</button>
+    
+    <div id="kq"></div>
+</div>
 
 <script>
 const ds = {
@@ -95,8 +138,16 @@ function tim(){
     let kq = document.getElementById("kq");
 
     if(ds[ten]){
+        kq.style.display = "block";
+        kq.style.color = "#155724";
+        kq.style.backgroundColor = "#d4edda";
+        kq.style.borderColor = "#c3e6cb";
         kq.innerText = ds[ten];
     } else {
+        kq.style.display = "block";
+        kq.style.color = "#721c24";
+        kq.style.backgroundColor = "#f8d7da";
+        kq.style.borderColor = "#f5c6cb";
         kq.innerText = "Không tìm thấy tên học sinh này trong danh sách lớp 9A8.";
     }
 }
