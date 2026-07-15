@@ -2,81 +2,105 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<title>Tính C(n,k)</title>
+<title>Tra cứu phụ huynh 9A8</title>
+
 <style>
 body{
     font-family: Arial;
     margin:40px;
+    background:#f5f5f5;
 }
 input{
-    width:100px;
-    margin:5px;
+    width:350px;
+    padding:10px;
+    font-size:16px;
 }
 button{
-    margin-top:10px;
-    padding:8px 15px;
+    padding:10px 20px;
+    font-size:16px;
+    cursor:pointer;
+    margin-left:10px;
+}
+#kq{
+    margin-top:20px;
+    font-size:20px;
+    color:blue;
+    white-space:pre-wrap;
 }
 </style>
+
 </head>
+
 <body>
 
-<h2>Tính C(n,k) mod 1e9+7</h2>
+<h2>Tra cứu tên phụ huynh 9A8</h2>
 
-<p>n:</p>
-<input type="number" id="n">
+<input type="text" id="ten" placeholder="Nhập họ và tên">
+<button onclick="tim()">Tra cứu</button>
 
-<p>k:</p>
-<input type="number" id="k">
-
-<br>
-
-<button onclick="solve()">Tính</button>
-
-<h3 id="ans"></h3>
+<div id="kq"></div>
 
 <script>
 
-const MOD=1000000007n;
+const ds = {
 
-function power(a,b){
-    a=BigInt(a);
-    b=BigInt(b);
+"nguyen kieu anh":"Bố: Nguyễn Quý Thành\nMẹ: Bùi Thị Kim Thúy",
+"phan hoang anh":"Bố: Phan Mạnh Tưởng\nMẹ: Vũ Thị Linh",
+"ha hai binh":"Bố: Hà Phương Lâm\nMẹ: Nguyễn Thị Thanh Vân",
+"nguyen cong binh":"Bố: Nguyễn Công Chính\nMẹ: Vương Ngọc Phương",
+"chu ngoc cham":"Bố: Chu Mạnh Cường\nMẹ: Phí Thị Kim Dung",
+"nguyen khanh dat":"Bố: Nguyễn Văn Tuấn\nMẹ: Nguyễn Thị Nguyên",
+"tran tri dung":"Bố: Trần Văn Chí\nMẹ: Nguyễn Thị Hồng Nhung",
+"lo khanh duy":"Bố: Lò Văn Thanh\nMẹ: Tống Thị Hoa",
+"cao duc giang":"Bố: Cao Xuân Hoạt\nMẹ: Quách Thị Thanh Tuyền",
+"chu hong hai":"Bố: Chu Hồng Thái\nMẹ: Bùi Thị Tuyết Lan",
+"hoang duc hai":"Bố: Hoàng Văn Chuyên\nMẹ: Đặng Thị Lan Hương",
+"dao dung hieu":"Bố: Đào Vinh Quang\nMẹ: Trần Thị Thu Hương",
+"dinh van nhat hoang":"Bố: Đinh Văn Khánh\nMẹ: Nguyễn Thanh Yên",
+"chu gia huy":"Bố: Chu Ngọc Sơn\nMẹ: Lê Thị Hùng",
+"tran bao huy":"Bố: Trần Anh Minh\nMẹ: La Phương Thảo",
+"hoang xuan khanh":"Bố: Hoàng Xuân Hoa\nMẹ: Hoàng Thị Lệ",
+"nguyen duc khanh":"Bố: Nguyễn Mạnh Hùng\nMẹ: Vũ Thị Hoa",
+"ta gia khanh":"Bố: Tạ Hùng Cường\nMẹ: Cao Thị Phương Thúy",
+"dao trong khoi":"Bố: Đào Trọng Tấn\nMẹ: Nguyễn Thị Thúy",
+"nguyen chi kien":"Bố: Nguyễn Mạnh Hà\nMẹ: Đặng Thị Hồng Vinh",
+"nguyen le viet lam":"Bố: Nguyễn Thành Nam\nMẹ: Lê Thị Thu Hạnh",
 
-    let res=1n;
+"nguyen quang minh":"Bố: Nguyễn Giang Sơn\nMẹ: Lương Thu Hà",
+"nguyen tuan minh":"Bố: Nguyễn Việt Tiến\nMẹ: Nguyễn Thị Kim Dung",
+"do nhat nam":"Bố: Đỗ Hải Hoàng Sơn\nMẹ: Lê Thị Vân Anh",
+"bui kim ngan":"Bố: Bùi Đăng Ninh\nMẹ: Nguyễn Thị Thu Nghĩa",
+"bui kim ngoc":"Bố: Bùi Văn Thụy\nMẹ: Nguyễn Thị Lương",
+"le bao ngoc":"Bố: Lê Quang Lợi\nMẹ: Hoàng Thị Hồng Linh",
+"nguyen thao ngoc":"Bố: Nguyễn Tiến Việt\nMẹ: Nguyễn Kim Ngân",
+"tran dang ninh":"Bố: Trần Vĩ Tùng\nMẹ: Bùi Thị Thịnh",
+"cao minh quan":"Bố: Cao Đức Cảnh\nMẹ: Lưu Thị Lan",
+"do minh quan":"Bố: Đỗ Tất Thắng\nMẹ: Nguyễn Thị Tuyết",
+"nguyen anh quan":"Bố: Nguyễn Việt Dũng\nMẹ: Phạm Thị Việt Hà",
+"dao tu quynh":"Bố: Đào Cách Hoành\nMẹ: Phan Thị Hạnh",
+"nguyen phuong thao":"Bố: Nguyễn Tiến Dũng\nMẹ: Đoàn Thị Thu Hà",
+"tran anh thu":"Bố: Trần Tuấn Anh\nMẹ: Vũ Thị Huệ Minh",
+"bui minh thuy":"Bố: Bùi Văn Hải\nMẹ: Trần Thị Chung",
+"dao thu trang":"Bố: Đào Văn Bằng\nMẹ: Nguyễn Thị Kim Thư",
+"phi bao trang":"Bố: Phí Quốc Huy\nMẹ: Lê Thị Nhung",
+"nguyen vu tuan":"Bố: Nguyễn Hải Dương\nMẹ: Vũ Thị Quỳnh Anh",
+"cao duc vuong":"Bố: Cao Anh Tuấn\nMẹ: Nguyễn Thị Lê Hằng",
+"nguyen minh vuong":"Bố: Nguyễn Minh Cường\nMẹ: Nguyễn Thị Thu Huyền"
 
-    while(b>0n){
-        if(b&1n)
-            res=res*a%MOD;
-        a=a*a%MOD;
-        b>>=1n;
+};
+
+function tim(){
+
+    let ten=document.getElementById("ten").value.toLowerCase().trim();
+
+    let kq=document.getElementById("kq");
+
+    if(ds[ten]){
+        kq.innerText=ds[ten];
     }
-
-    return res;
-}
-
-function C(n,k){
-
-    n=BigInt(n);
-    k=BigInt(k);
-
-    let ans=1n;
-
-    for(let i=k+1n;i<=n;i++)
-        ans=ans*i%MOD;
-
-    for(let i=1n;i<=n-k;i++)
-        ans=ans*power(i,MOD-2n)%MOD;
-
-    return ans;
-}
-
-function solve(){
-
-    let n=document.getElementById("n").value;
-    let k=document.getElementById("k").value;
-
-    document.getElementById("ans").innerHTML=
-    "Kết quả: "+C(n,k).toString();
+    else{
+        kq.innerText="Không tìm thấy tên.";
+    }
 
 }
 
