@@ -3,10 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Tra cứu phụ huynh 9A8-THCS Gia Cẩm</title>
-<title>Note:Nhập tên không dấu ex:Nguyen Van A</title>
 <style>
 body{
-    font-family: Arial;
+    font-family: Arial, sans-serif;
     margin:40px;
     background:#f5f5f5;
 }
@@ -21,6 +20,11 @@ button{
     cursor:pointer;
     margin-left:10px;
 }
+.huong-dan {
+    color: #666;
+    font-style: italic;
+    margin-bottom: 15px;
+}
 #kq{
     margin-top:20px;
     font-size:20px;
@@ -34,74 +38,68 @@ button{
 <body>
 
 <h2>Tra cứu tên phụ huynh 9A8</h2>
+<!-- Đưa dòng lưu ý xuống đây để người dùng dễ nhìn thấy -->
+<p class="huong-dan">Lưu ý: Nhập tên không dấu (Ví dụ: nguyen van a)</p>
 
-<input type="text" id="ten" placeholder="Nhập họ và tên">
+<!-- Thêm onkeydown để bấm Enter là tra cứu được luôn -->
+<input type="text" id="ten" placeholder="Nhập họ và tên học sinh..." onkeydown="if(event.key === 'Enter') tim()">
 <button onclick="tim()">Tra cứu</button>
 
 <div id="kq"></div>
 
 <script>
-
 const ds = {
-
-"nguyen kieu anh":"Bố: Nguyễn Quý Thành\nMẹ: Bùi Thị Kim Thúy",
-"phan hoang anh":"Bố: Phan Mạnh Tưởng\nMẹ: Vũ Thị Linh",
-"ha hai binh":"Bố: Hà Phương Lâm\nMẹ: Nguyễn Thị Thanh Vân",
-"nguyen cong binh":"Bố: Nguyễn Công Chính\nMẹ: Vương Ngọc Phương",
-"chu ngoc cham":"Bố: Chu Mạnh Cường\nMẹ: Phí Thị Kim Dung",
-"nguyen khanh dat":"Bố: Nguyễn Văn Tuấn\nMẹ: Nguyễn Thị Nguyên",
-"tran tri dung":"Bố: Trần Văn Chí\nMẹ: Nguyễn Thị Hồng Nhung",
-"lo khanh duy":"Bố: Lò Văn Thanh\nMẹ: Tống Thị Hoa",
-"cao duc giang":"Bố: Cao Xuân Hoạt\nMẹ: Quách Thị Thanh Tuyền",
-"chu hong hai":"Bố: Chu Hồng Thái\nMẹ: Bùi Thị Tuyết Lan",
-"hoang duc hai":"Bố: Hoàng Văn Chuyên\nMẹ: Đặng Thị Lan Hương",
-"dao dung hieu":"Bố: Đào Vinh Quang\nMẹ: Trần Thị Thu Hương",
-"dinh van nhat hoang":"Bố: Đinh Văn Khánh\nMẹ: Nguyễn Thanh Yên",
-"chu gia huy":"Bố: Chu Ngọc Sơn\nMẹ: Lê Thị Hùng",
-"tran bao huy":"Bố: Trần Anh Minh\nMẹ: La Phương Thảo",
-"hoang xuan khanh":"Bố: Hoàng Xuân Hoa\nMẹ: Hoàng Thị Lệ",
-"nguyen duc khanh":"Bố: Nguyễn Mạnh Hùng\nMẹ: Vũ Thị Hoa",
-"ta gia khanh":"Bố: Tạ Hùng Cường\nMẹ: Cao Thị Phương Thúy",
-"dao trong khoi":"Bố: Đào Trọng Tấn\nMẹ: Nguyễn Thị Thúy",
-"nguyen chi kien":"Bố: Nguyễn Mạnh Hà\nMẹ: Đặng Thị Hồng Vinh",
-"nguyen le viet lam":"Bố: Nguyễn Thành Nam\nMẹ: Lê Thị Thu Hạnh",
-
-"nguyen quang minh":"Bố: Nguyễn Giang Sơn\nMẹ: Lương Thu Hà",
-"nguyen tuan minh":"Bố: Nguyễn Việt Tiến\nMẹ: Nguyễn Thị Kim Dung",
-"do nhat nam":"Bố: Đỗ Hải Hoàng Sơn\nMẹ: Lê Thị Vân Anh",
-"bui kim ngan":"Bố: Bùi Đăng Ninh\nMẹ: Nguyễn Thị Thu Nghĩa",
-"bui kim ngoc":"Bố: Bùi Văn Thụy\nMẹ: Nguyễn Thị Lương",
-"le bao ngoc":"Bố: Lê Quang Lợi\nMẹ: Hoàng Thị Hồng Linh",
-"nguyen thao ngoc":"Bố: Nguyễn Tiến Việt\nMẹ: Nguyễn Kim Ngân",
-"tran dang ninh":"Bố: Trần Vĩ Tùng\nMẹ: Bùi Thị Thịnh",
-"cao minh quan":"Bố: Cao Đức Cảnh\nMẹ: Lưu Thị Lan",
-"do minh quan":"Bố: Đỗ Tất Thắng\nMẹ: Nguyễn Thị Tuyết",
-"nguyen anh quan":"Bố: Nguyễn Việt Dũng\nMẹ: Phạm Thị Việt Hà",
-"nguyen phuong thao":"Bố: Nguyễn Tiến Dũng\nMẹ: Đoàn Thị Thu Hà",
-"tran anh thu":"Bố: Trần Tuấn Anh\nMẹ: Vũ Thị Huệ Minh",
-"dao thu trang":"Bố: Đào Văn Bằng\nMẹ: Nguyễn Thị Kim Thư",
-"phi bao trang":"Bố: Phí Quốc Huy\nMẹ: Lê Thị Nhung",
-"nguyen vu tuan":"Bố: Nguyễn Hải Dương\nMẹ: Vũ Thị Quỳnh Anh",
-"cao duc vuong":"Bố: Cao Anh Tuấn\nMẹ: Nguyễn Thị Lê Hằng",
-"nguyen minh vuong":"Bố: Nguyễn Minh Cường\nMẹ: Nguyễn Thị Thu Huyền"
-
+    "nguyen kieu anh":"Bố: Nguyễn Quý Thành\nMẹ: Bùi Thị Kim Thúy",
+    "phan hoang anh":"Bố: Phan Mạnh Tưởng\nMẹ: Vũ Thị Linh",
+    "ha hai binh":"Bố: Hà Phương Lâm\nMẹ: Nguyễn Thị Thanh Vân",
+    "nguyen cong binh":"Bố: Nguyễn Công Chính\nMẹ: Vương Ngọc Phương",
+    "chu ngoc cham":"Bố: Chu Mạnh Cường\nMẹ: Phí Thị Kim Dung",
+    "nguyen khanh dat":"Bố: Nguyễn Văn Tuấn\nMẹ: Nguyễn Thị Nguyên",
+    "tran tri dung":"Bố: Trần Văn Chí\nMẹ: Nguyễn Thị Hồng Nhung",
+    "lo khanh duy":"Bố: Lò Văn Thanh\nMẹ: Tống Thị Hoa",
+    "cao duc giang":"Bố: Cao Xuân Hoạt\nMẹ: Quách Thị Thanh Tuyền",
+    "chu hong hai":"Bố: Chu Hồng Thái\nMẹ: Bùi Thị Tuyết Lan",
+    "hoang duc hai":"Bố: Hoàng Văn Chuyên\nMẹ: Đặng Thị Lan Hương",
+    "dao dung hieu":"Bố: Đào Vinh Quang\nMẹ: Trần Thị Thu Hương",
+    "dinh van nhat hoang":"Bố: Đinh Văn Khánh\nMẹ: Nguyễn Thanh Yên",
+    "chu gia huy":"Bố: Chu Ngọc Sơn\nMẹ: Lê Thị Hùng",
+    "tran bao huy":"Bố: Trần Anh Minh\nMẹ: La Phương Thảo",
+    "hoang xuan khanh":"Bố: Hoàng Xuân Hoa\nMẹ: Hoàng Thị Lệ",
+    "nguyen duc khanh":"Bố: Nguyễn Mạnh Hùng\nMẹ: Vũ Thị Hoa",
+    "ta gia khanh":"Bố: Tạ Hùng Cường\nMẹ: Cao Thị Phương Thúy",
+    "dao trong khoi":"Bố: Đào Trọng Tấn\nMẹ: Nguyễn Thị Thúy",
+    "nguyen chi kien":"Bố: Nguyễn Mạnh Hà\nMẹ: Đặng Thị Hồng Vinh",
+    "nguyen le viet lam":"Bố: Nguyễn Thành Nam\nMẹ: Lê Thị Thu Hạnh",
+    "nguyen quang minh":"Bố: Nguyễn Giang Sơn\nMẹ: Lương Thu Hà",
+    "nguyen tuan minh":"Bố: Nguyễn Việt Tiến\nMẹ: Nguyễn Thị Kim Dung",
+    "do nhat nam":"Bố: Đỗ Hải Hoàng Sơn\nMẹ: Lê Thị Vân Anh",
+    "bui kim ngan":"Bố: Bùi Đăng Ninh\nMẹ: Nguyễn Thị Thu Nghĩa",
+    "bui kim ngoc":"Bố: Bùi Văn Thụy\nMẹ: Nguyễn Thị Lương",
+    "le bao ngoc":"Bố: Lê Quang Lợi\nMẹ: Hoàng Thị Hồng Linh",
+    "nguyen thao ngoc":"Bố: Nguyễn Tiến Việt\nMẹ: Nguyễn Kim Ngân",
+    "tran dang ninh":"Bố: Trần Vĩ Tùng\nMẹ: Bùi Thị Thịnh",
+    "cao minh quan":"Bố: Cao Đức Cảnh\nMẹ: Lưu Thị Lan",
+    "do minh quan":"Bố: Đỗ Tất Thắng\nMẹ: Nguyễn Thị Tuyết",
+    "nguyen anh quan":"Bố: Nguyễn Việt Dũng\nMẹ: Phạm Thị Việt Hà",
+    "nguyen phuong thao":"Bố: Nguyễn Tiến Dũng\nMẹ: Đoàn Thị Thu Hà",
+    "tran anh thu":"Bố: Trần Tuấn Anh\nMẹ: Vũ Thị Huệ Minh",
+    "dao thu trang":"Bố: Đào Văn Bằng\nMẹ: Nguyễn Thị Kim Thư",
+    "phi bao trang":"Bố: Phí Quốc Huy\nMẹ: Lê Thị Nhung",
+    "nguyen vu tuan":"Bố: Nguyễn Hải Dương\nMẹ: Vũ Thị Quỳnh Anh",
+    "cao duc vuong":"Bố: Cao Anh Tuấn\nMẹ: Nguyễn Thị Lê Hằng",
+    "nguyen minh vuong":"Bố: Nguyễn Minh Cường\nMẹ: Nguyễn Thị Thu Huyền"
 };
 
 function tim(){
-
-    let ten=document.getElementById("ten").value.toLowerCase().trim();
-
-    let kq=document.getElementById("kq");
+    let ten = document.getElementById("ten").value.toLowerCase().trim();
+    let kq = document.getElementById("kq");
 
     if(ds[ten]){
-        kq.innerText=ds[ten];
+        kq.innerText = ds[ten];
+    } else {
+        kq.innerText = "Không tìm thấy tên học sinh này trong danh sách lớp 9A8.";
     }
-    else{
-        kq.innerText="Không tìm thấy tên.";
-    }
-
 }
-
 </script>
 
 </body>
