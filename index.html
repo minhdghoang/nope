@@ -16,27 +16,28 @@ html, body {
 }
 body {
     font-family: Arial, sans-serif;
-    background: #f5f5f5;
+    background: #121212; /* Nền đen sẫm của toàn trang */
     display: flex;
     justify-content: center;
     align-items: center;
 }
 /* Khung chứa nội dung được bo góc, đổ bóng và căn giữa */
 .container {
-    background: #ffffff;
+    background: #1e1e1e; /* Màu nền xám tối cho khung chứa */
     padding: 30px;
     border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
     text-align: center;
     max-width: 450px;
     width: 90%;
+    border: 1px solid #2d2d2d; /* Viền mỏng tinh tế */
 }
 h2 {
     margin-top: 0;
-    color: #333;
+    color: #ffffff; /* Chữ tiêu đề màu trắng */
 }
 .huong-dan {
-    color: #666;
+    color: #aaaaaa; /* Chữ hướng dẫn màu xám sáng */
     font-style: italic;
     margin-bottom: 20px;
     font-size: 14px;
@@ -46,10 +47,20 @@ input {
     width: 100%;
     padding: 12px;
     font-size: 16px;
-    border: 1px solid #ccc;
+    background-color: #2d2d2d; /* Ô nhập màu tối */
+    color: #ffffff; /* Chữ gõ vào màu trắng */
+    border: 1px solid #444444;
     border-radius: 5px;
     box-sizing: border-box;
     margin-bottom: 15px;
+}
+/* Đổi màu chữ gợi ý (placeholder) trong ô nhập liệu */
+input::placeholder {
+    color: #777777;
+}
+input:focus {
+    outline: none;
+    border-color: #007bff; /* Viền xanh khi bấm vào ô nhập */
 }
 /* Nút bấm */
 button {
@@ -71,13 +82,10 @@ button:hover {
 #kq {
     margin-top: 25px;
     font-size: 18px;
-    color: #155724;
-    background-color: #d4edda;
-    border: 1px solid #c3e6cb;
-    padding: 15px;
-    border-radius: 5px;
     white-space: pre-wrap;
     text-align: left;
+    padding: 15px;
+    border-radius: 5px;
     display: none; /* Ẩn đi khi chưa tìm kiếm */
 }
 </style>
@@ -97,8 +105,8 @@ button:hover {
 
 <script>
 const ds = {
-    "nguyen kieu anh":"Bố: Nguyễn Quý Thành👨‍🍳\nMẹ: Bùi Thị Kim Thúy",
-    "phan hoang anh":"Bố: Phan Mạnh Tưởng👨‍🏫\nMẹ: Vũ Thị Linh",
+    "nguyen kieu anh":"Bố: Nguyễn Quý Thành\nMẹ: Bùi Thị Kim Thúy",
+    "phan hoang anh":"Bố: Phan Mạnh Tưởng\nMẹ: Vũ Thị Linh",
     "ha hai binh":"Bố: Hà Phương Lâm\nMẹ: Nguyễn Thị Thanh Vân",
     "nguyen cong binh":"Bố: Nguyễn Công Chính\nMẹ: Vương Ngọc Phương",
     "chu ngoc cham":"Bố: Chu Mạnh Cường\nMẹ: Phí Thị Kim Dung",
@@ -107,7 +115,7 @@ const ds = {
     "lo khanh duy":"Bố: Lò Văn Thanh\nMẹ: Tòng Thị Hoa",
     "cao duc giang":"Bố: Cao Xuân Hoạt\nMẹ: Quách Thị Thanh Tuyền",
     "chu hong hai":"Bố: Chu Hồng Thái\nMẹ: Bùi Thị Tuyết Lan",
-    "hoang duc hai":"Bố: Hoàng Văn Chuyên🚕🚕🚕\nMẹ: Đặng Thị Lan Hương",
+    "hoang duc hai":"Bố: Hoàng Văn Chuyên\nMẹ: Đặng Thị Lan Hương",
     "dao dung hieu":"Bố: Đào Vinh Quang\nMẹ: Trần Thị Thu Hường",
     "dinh van nhat hoang":"Bố: Đinh Văn Khánh\nMẹ: Nguyễn Thanh Yên",
     "chu gia huy":"Bố: Chu Ngọc Sơn\nMẹ: Lê Thị Hưng",
@@ -136,7 +144,7 @@ const ds = {
     "nguyen vu tuan":"Bố: Nguyễn Hải Dương\nMẹ: Vũ Thị Quỳnh Anh",
     "cao duc vuong":"Bố: Cao Anh Tuấn\nMẹ: Nguyễn Thị Lệ Hằng",
     "nguyen minh vuong":"Bố: Nguyễn Minh Cường\nMẹ: Nguyễn Thị Thu Huyền",
-    "dinh anh tuan":"Bố: Không biết tên gì\nMẹ: Quỳnh Đá Quý💎💎💎",
+    "dinh anh tuan":"Bố: Không biết tên gì\nMẹ: Quỳnh Đá Quý",
     "le huy hoang":"Bố: Lê Huy Luận\nMẹ: Thanh Loan"
 };
 
@@ -146,15 +154,17 @@ function tim(){
 
     if(ds[ten]){
         kq.style.display = "block";
-        kq.style.color = "#155724";
-        kq.style.backgroundColor = "#d4edda";
-        kq.style.borderColor = "#c3e6cb";
+        // Màu khi tìm kiếm thành công (tông tối dễ nhìn)
+        kq.style.color = "#a3e635"; /* Xanh lá sáng */
+        kq.style.backgroundColor = "#14532d"; /* Xanh lá đậm tối */
+        kq.style.borderColor = "#15803d";
         kq.innerText = ds[ten];
     } else {
         kq.style.display = "block";
-        kq.style.color = "#721c24";
-        kq.style.backgroundColor = "#f8d7da";
-        kq.style.borderColor = "#f5c6cb";
+        // Màu khi không tìm thấy kết quả (tông tối dễ nhìn)
+        kq.style.color = "#fca5a5"; /* Đỏ hồng sáng */
+        kq.style.backgroundColor = "#7f1d1d"; /* Đỏ đậm tối */
+        kq.style.borderColor = "#b91c1c";
         kq.innerText = "Không tìm thấy tên học sinh này trong danh sách lớp 9A8.";
     }
 }
