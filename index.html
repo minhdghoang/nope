@@ -18,7 +18,6 @@ body {
     font-family: Arial, sans-serif;
     background: #121212; /* Nền đen sẫm của toàn trang */
     display: flex;
-    flex-direction: column; /* Sắp xếp khung và chữ ký theo chiều dọc */
     justify-content: center;
     align-items: center;
 }
@@ -89,14 +88,18 @@ button:hover {
     border-radius: 5px;
     display: none; /* Ẩn đi khi chưa tìm kiếm */
 }
-/* Dòng chữ bản quyền nằm trên nền đen bên ngoài khung */
+/* ĐÃ SỬA: Đưa dòng chữ bản quyền xuống sát mép dưới cùng màn hình */
 .copyright {
-    margin-top: 20px; /* Khoảng cách phía dưới khung container */
-    font-size: 14px; /* Đã chỉnh to hơn 1 tí so với bản cũ */
-    color: #555555; /* Màu chữ xám trầm mờ ảo trên nền đen */
+    position: fixed;
+    bottom: 15px; /* Cách mép dưới màn hình 15 pixel */
+    left: 0;
+    right: 0;
+    font-size: 14px;
+    color: #555555; /* Màu chữ xám mờ tinh tế */
     font-style: italic;
     letter-spacing: 0.8px;
     text-align: center;
+    pointer-events: none; /* Tránh cản trở việc bấm chuột trên màn hình */
 }
 </style>
 </head>
@@ -113,7 +116,7 @@ button:hover {
     <div id="kq"></div>
 </div>
 
-<!-- Đã đưa dòng chữ authorized by midhg xuống nền đen bên ngoài khung -->
+<!-- Dòng chữ bản quyền cố định ở dưới cùng -->
 <div class="copyright">By midhg☆*: .｡. o(≧▽≦)o .｡.:*☆</div>
 
 <script>
