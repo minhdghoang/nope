@@ -88,6 +88,14 @@ button:hover {
     border-radius: 5px;
     display: none; /* Ẩn đi khi chưa tìm kiếm */
 }
+/* Dòng chữ bản quyền nhỏ phía dưới cùng */
+.copyright {
+    margin-top: 25px;
+    font-size: 11px;
+    color: #555555; /* Màu chữ xám mờ tinh tế */
+    font-style: italic;
+    letter-spacing: 0.5px;
+}
 </style>
 </head>
 <body>
@@ -101,12 +109,15 @@ button:hover {
     <button onclick="tim()">Tra cứu</button>
     
     <div id="kq"></div>
+    
+    <!-- ĐÃ THÊM: Dòng chữ authorized by midhg bé -->
+    <div class="copyright">authorized by midhg☆*: .｡. o(≧▽≦)o .｡.:*☆</div>
 </div>
 
 <script>
 const ds = {
-    "nguyen kieu anh":"Bố: Nguyễn Quý Thành👨‍🍳\nMẹ: Bùi Thị Kim Thúy",
-    "phan hoang anh":"Bố: Phan Mạnh Tưởng👨‍🏫\nMẹ: Vũ Thị Linh",
+    "nguyen kieu anh":"Bố: Nguyễn Quý Thành\nMẹ: Bùi Thị Kim Thúy",
+    "phan hoang anh":"Bố: Phan Mạnh Tưởng\nMẹ: Vũ Thị Linh",
     "ha hai binh":"Bố: Hà Phương Lâm\nMẹ: Nguyễn Thị Thanh Vân",
     "nguyen cong binh":"Bố: Nguyễn Công Chính\nMẹ: Vương Ngọc Phương",
     "chu ngoc cham":"Bố: Chu Mạnh Cường\nMẹ: Phí Thị Kim Dung",
@@ -115,7 +126,7 @@ const ds = {
     "lo khanh duy":"Bố: Lò Văn Thanh\nMẹ: Tòng Thị Hoa",
     "cao duc giang":"Bố: Cao Xuân Hoạt\nMẹ: Quách Thị Thanh Tuyền",
     "chu hong hai":"Bố: Chu Hồng Thái\nMẹ: Bùi Thị Tuyết Lan",
-    "hoang duc hai":"Bố: Hoàng Văn Chuyên🚕\nMẹ: Đặng Thị Lan Hương",
+    "hoang duc hai":"Bố: Hoàng Văn Chuyên\nMẹ: Đặng Thị Lan Hương",
     "dao dung hieu":"Bố: Đào Vinh Quang\nMẹ: Trần Thị Thu Hường",
     "dinh van nhat hoang":"Bố: Đinh Văn Khánh\nMẹ: Nguyễn Thanh Yên",
     "chu gia huy":"Bố: Chu Ngọc Sơn\nMẹ: Lê Thị Hưng",
@@ -144,7 +155,7 @@ const ds = {
     "nguyen vu tuan":"Bố: Nguyễn Hải Dương\nMẹ: Vũ Thị Quỳnh Anh",
     "cao duc vuong":"Bố: Cao Anh Tuấn\nMẹ: Nguyễn Thị Lệ Hằng",
     "nguyen minh vuong":"Bố: Nguyễn Minh Cường\nMẹ: Nguyễn Thị Thu Huyền",
-    "dinh anh tuan":"Bố: Không biết tên gì\nMẹ: Quỳnh Đá Quý💎",
+    "dinh anh tuan":"Bố: Không biết tên gì\nMẹ: Quỳnh Đá Quý",
     "le huy hoang":"Bố: Lê Huy Luận\nMẹ: Thanh Loan"
 };
 
