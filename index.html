@@ -16,21 +16,27 @@ html, body {
 }
 body {
     font-family: Arial, sans-serif;
-    background: #121212; /* Nền đen sẫm của toàn trang */
+    
+    /* ĐÃ THÊM: Cài đặt ảnh GIF làm hình nền phủ kín phần bên ngoài khung */
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.75)), url('catmeomeo.gif') no-repeat center center fixed;
+    background-size: cover; 
+    
     display: flex;
     justify-content: center;
     align-items: center;
 }
 /* Khung chứa nội dung được bo góc, đổ bóng và căn giữa */
 .container {
-    background: #1e1e1e; /* Màu nền xám tối cho khung chứa */
+    /* ĐÃ SỬA: Đổi sang màu tối trong suốt (0.85) kết hợp làm mờ kính để thấy ảnh nền GIF phía sau cực ảo */
+    background: rgba(30, 30, 30, 0.85); 
+    backdrop-filter: blur(10px); 
     padding: 30px;
     border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.6);
     text-align: center;
     max-width: 450px;
     width: 90%;
-    border: 1px solid #2d2d2d; /* Viền mỏng tinh tế */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Viền sáng mờ nhẹ hợp với ảnh nền */
 }
 h2 {
     margin-top: 0;
@@ -95,7 +101,8 @@ button:hover {
     left: 0;
     right: 0;
     font-size: 14px;
-    color: #555555; /* Màu chữ xám mờ tinh tế */
+    color: #ffffff; /* Đổi sang màu trắng mờ để nổi bật trên nền GIF */
+    opacity: 0.45;
     font-style: italic;
     letter-spacing: 0.8px;
     text-align: center;
@@ -170,16 +177,14 @@ function tim(){
 
     if(ds[ten]){
         kq.style.display = "block";
-        // Màu khi tìm kiếm thành công (tông tối dễ nhìn)
         kq.style.color = "#a3e635"; /* Xanh lá sáng */
-        kq.style.backgroundColor = "#14532d"; /* Xanh lá đậm tối */
+        kq.style.backgroundColor = "rgba(20, 83, 45, 0.85)"; /* Nền mờ cho bảng kết quả hợp với nền kính */
         kq.style.borderColor = "#15803d";
         kq.innerText = ds[ten];
     } else {
         kq.style.display = "block";
-        // Màu khi không tìm thấy kết quả (tông tối dễ nhìn)
         kq.style.color = "#fca5a5"; /* Đỏ hồng sáng */
-        kq.style.backgroundColor = "#7f1d1d"; /* Đỏ đậm tối */
+        kq.style.backgroundColor = "rgba(127, 29, 29, 0.85)"; 
         kq.style.borderColor = "#b91c1c";
         kq.innerText = "Không tìm thấy tên học sinh này trong danh sách lớp 9A8.";
     }
