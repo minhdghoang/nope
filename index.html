@@ -113,25 +113,22 @@ button:hover {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    width: 45px;
-    height: 45px;
-    background-color: #1877f2; 
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    transition: transform 0.2s ease, background-color 0.2s ease;
+    transition: transform 0.2s ease;
     z-index: 100;
 }
 .fb-floating-button:hover {
-    transform: scale(1.15); 
-    background-color: #166fe5;
+    transform: scale(1.12); /* Phóng to nhẹ khi rê chuột vào */
 }
 .fb-floating-button svg {
-    width: 25px;
-    height: 25px;
-    fill: white;
+    width: 100%;
+    height: 100%;
 }
 </style>
 </head>
@@ -148,13 +145,16 @@ button:hover {
     <div id="kq"></div>
 </div>
 
-<!-- Dòng bản quyền cố định ở giữa đáy (Đã sửa lỗi hiển thị chữ thừa) -->
+<!-- Dòng bản quyền cố định ở giữa đáy -->
 <div class="copyright">By midhg☆*: .｡. o(≧▽≦)o .｡.:*☆</div>
 
-<!-- Nút bấm Icon Facebook ở góc dưới bên phải -->
+<!-- Nút bấm Icon Facebook ở góc dưới bên phải (Đã đổi sang mẫu logo mới của bạn) -->
 <a href="https://www.facebook.com/anghoangminh.583102/?locale=vi_VN" target="_blank" class="fb-floating-button" title="Liên hệ Admin">
     <svg viewBox="0 0 24 24">
-        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+        <!-- Vòng tròn nền xanh chuẩn màu hình mẫu -->
+        <circle cx="12" cy="12" r="12" fill="#1877F2"/>
+        <!-- Chữ f màu trắng chạm đáy viền chuẩn xác -->
+        <path d="M15.112 24v-9.294h3.118l.466-3.62h-3.584V8.77c0-1.048.29-1.762 1.794-1.762l1.918-.001V3.764c-.332-.044-1.47-.143-2.793-.143-2.766 0-4.66 1.689-4.66 4.79v2.675H8.251v3.62h3.123V24h3.738z" fill="#FFFFFF"/>
     </svg>
 </a>
 
