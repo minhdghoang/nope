@@ -17,7 +17,7 @@ html, body {
 body {
     font-family: Arial, sans-serif;
     
-    /* ĐÃ THÊM: Cài đặt ảnh GIF làm hình nền phủ kín phần bên ngoài khung */
+    /* Cài đặt ảnh GIF làm hình nền phủ kín phần bên ngoài khung */
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.75)), url('catmeomeo.gif') no-repeat center center fixed;
     background-size: cover; 
     
@@ -27,7 +27,6 @@ body {
 }
 /* Khung chứa nội dung được bo góc, đổ bóng và căn giữa */
 .container {
-    /* ĐÃ SỬA: Đổi sang màu tối trong suốt (0.85) kết hợp làm mờ kính để thấy ảnh nền GIF phía sau cực ảo */
     background: rgba(30, 30, 30, 0.85); 
     backdrop-filter: blur(10px); 
     padding: 30px;
@@ -36,14 +35,14 @@ body {
     text-align: center;
     max-width: 450px;
     width: 90%;
-    border: 1px solid rgba(255, 255, 255, 0.1); /* Viền sáng mờ nhẹ hợp với ảnh nền */
+    border: 1px solid rgba(255, 255, 255, 0.1); 
 }
 h2 {
     margin-top: 0;
-    color: #ffffff; /* Chữ tiêu đề màu trắng */
+    color: #ffffff; 
 }
 .huong-dan {
-    color: #aaaaaa; /* Chữ hướng dẫn màu xám sáng */
+    color: #aaaaaa; 
     font-style: italic;
     margin-bottom: 20px;
     font-size: 14px;
@@ -53,8 +52,8 @@ input {
     width: 100%;
     padding: 12px;
     font-size: 16px;
-    background-color: #2d2d2d; /* Ô nhập màu tối */
-    color: #ffffff; /* Chữ gõ vào màu trắng */
+    background-color: #2d2d2d; 
+    color: #ffffff; 
     border: 1px solid #444444;
     border-radius: 5px;
     box-sizing: border-box;
@@ -66,7 +65,7 @@ input::placeholder {
 }
 input:focus {
     outline: none;
-    border-color: #007bff; /* Viền xanh khi bấm vào ô nhập */
+    border-color: #007bff; 
 }
 /* Nút bấm */
 button {
@@ -92,21 +91,38 @@ button:hover {
     text-align: left;
     padding: 15px;
     border-radius: 5px;
-    display: none; /* Ẩn đi khi chưa tìm kiếm */
+    display: none; 
 }
-/* ĐÃ SỬA: Đưa dòng chữ bản quyền xuống sát mép dưới cùng màn hình */
-.copyright {
+/* ĐÃ THÊM: Khung chứa liên kết và bản quyền ở dưới đáy màn hình */
+.footer-group {
     position: fixed;
-    bottom: 15px; /* Cách mép dưới màn hình 15 pixel */
+    bottom: 15px; 
     left: 0;
     right: 0;
+    text-align: center;
+    z-index: 10;
+}
+/* ĐÃ THÊM: Phong cách cho liên kết Facebook */
+.fb-link {
+    display: inline-block;
+    color: #4da3ff; /* Màu xanh dương sáng nổi bật trên nền tối */
+    text-decoration: none;
     font-size: 14px;
-    color: #ffffff; /* Đổi sang màu trắng mờ để nổi bật trên nền GIF */
+    margin-bottom: 6px;
+    transition: color 0.2s, text-decoration 0.2s;
+    font-weight: 500;
+}
+.fb-link:hover {
+    color: #8cd3ff;
+    text-decoration: underline; /* Gạch chân khi di chuột vào */
+}
+.copyright {
+    font-size: 14px;
+    color: #ffffff; 
     opacity: 0.45;
     font-style: italic;
     letter-spacing: 0.8px;
-    text-align: center;
-    pointer-events: none; /* Tránh cản trở việc bấm chuột trên màn hình */
+    pointer-events: none; 
 }
 </style>
 </head>
@@ -123,8 +139,12 @@ button:hover {
     <div id="kq"></div>
 </div>
 
-<!-- Dòng chữ bản quyền cố định ở dưới cùng -->
-<div class="copyright">By midhg☆*: .｡. o(≧▽≦)o .｡.:*☆</div>
+<!-- Nhóm hiển thị liên kết Facebook và dòng bản quyền -->
+<div class="footer-group">
+    <!-- BẠN HÃY THAY LINK FACEBOOK CỦA BẠN VÀO TRONG DẤU NGOẶC KÉP dướii đây nhé -->
+    <a href="https://www.facebook.com/anghoangminh.583102/?locale=vi_VN" target="_blank" class="fb-link">🌐 Liên hệ Facebook Admin</a>
+    <div class="copyright">By midhg☆*: .｡. o(≧▽≦)o .｡.:*☆</div>
+</div>
 
 <script>
 const ds = {
@@ -177,13 +197,13 @@ function tim(){
 
     if(ds[ten]){
         kq.style.display = "block";
-        kq.style.color = "#a3e635"; /* Xanh lá sáng */
-        kq.style.backgroundColor = "rgba(20, 83, 45, 0.85)"; /* Nền mờ cho bảng kết quả hợp với nền kính */
+        kq.style.color = "#a3e635"; 
+        kq.style.backgroundColor = "rgba(20, 83, 45, 0.85)"; 
         kq.style.borderColor = "#15803d";
         kq.innerText = ds[ten];
     } else {
         kq.style.display = "block";
-        kq.style.color = "#fca5a5"; /* Đỏ hồng sáng */
+        kq.style.color = "#fca5a5"; 
         kq.style.backgroundColor = "rgba(127, 29, 29, 0.85)"; 
         kq.style.borderColor = "#b91c1c";
         kq.innerText = "Không tìm thấy tên học sinh này trong danh sách lớp 9A8.";
