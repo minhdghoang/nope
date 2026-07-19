@@ -108,7 +108,7 @@ button:hover {
     pointer-events: none; 
     z-index: 10;
 }
-/* Phong cách cho nút Logo Facebook ở góc phải màn hình */
+/* Phong cách cho nút Logo Facebook ở góc phải màn hình - ĐÃ FIX CĂN GIỮA TUYỆT ĐỐI */
 .fb-floating-button {
     position: fixed;
     bottom: 20px;
@@ -116,12 +116,12 @@ button:hover {
     width: 48px;
     height: 48px;
     border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     transition: transform 0.2s ease;
     z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .fb-floating-button:hover {
     transform: scale(1.12); 
@@ -129,6 +129,7 @@ button:hover {
 .fb-floating-button svg {
     width: 100%;
     height: 100%;
+    display: block;
 }
 </style>
 </head>
@@ -146,15 +147,12 @@ button:hover {
 </div>
 
 <!-- Dòng bản quyền cố định ở giữa đáy -->
-<div class="copyright">By midhg☆*: .｡. o(≧▽≦)o .｡.:*☆</div>
+<div class="copyright">By midhg☆*: .｡. o(≧碗≦)o .｡.:*☆</div>
 
-<!-- Nút bấm Icon Facebook ở góc dưới bên phải (Đã chỉnh lại viewBox để cân bằng thị giác) -->
+<!-- Nút bấm Icon Facebook ở góc dưới bên phải (ĐÃ THAY MÃ MỚI SỬA TRIỆT ĐỂ LỖI LỆCH HÌNH) -->
 <a href="https://www.facebook.com/anghoangminh.583102/?locale=vi_VN" target="_blank" class="fb-floating-button" title="Liên hệ Admin">
-    <svg viewBox="-0.5 -0.5 25 25">
-        <!-- Vòng tròn nền xanh -->
-        <circle cx="12" cy="12" r="12" fill="#1877F2"/>
-        <!-- Chữ f màu trắng đã dịch chuyển nhẹ sang trái để tạo cảm giác cân xứng tuyệt đối -->
-        <path d="M15.112 24v-9.294h3.118l.466-3.62h-3.584V8.77c0-1.048.29-1.762 1.794-1.762l1.918-.001V3.764c-.332-.044-1.47-.143-2.793-.143-2.766 0-4.66 1.689-4.66 4.79v2.675H8.251v3.62h3.123V24h3.738z" fill="#FFFFFF"/>
+    <svg viewBox="0 0 512 512">
+        <path fill="#1877f2" d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/>
     </svg>
 </a>
 
@@ -182,7 +180,7 @@ const ds = {
     "nguyen chi kien":"Bố: Nguyễn Mạnh Hà\nMẹ: Đặng Thị Hồng Vĩnh",
     "nguyen le viet lam":"Bố: Nguyễn Thành Nam\nMẹ: Lê Thị Thu Hạnh",
     "nguyen quang minh":"Bố: Nguyễn Giang Sơn\nMẹ: Lương Thu Hà",
-    "nguyen tuan minh":"Bố: Nguyễn Việtを開 Tiến\nMẹ: Nguyễn Thị Kim Dung",
+    "nguyen tuan minh":"Bố: Nguyễn Việt Tiến\nMẹ: Nguyễn Thị Kim Dung",
     "do nhat nam":"Bố: Đỗ Hải Hoàng Sơn\nMẹ: Lê Thị Vân Anh",
     "bui kim ngan":"Bố: Bùi Đăng Ninh\nMẹ: Nguyễn Thị Thu Nghĩa",
     "bui kim ngoc":"Bố: Bùi Văn Thụy\nMẹ: Nguyễn Thị Lương",
@@ -204,7 +202,8 @@ const ds = {
 };
 
 function tim(){
-    let ten = document.getElementById("ten").value.toLowerCase().trim();
+    let textInput = document.getElementById("ten").value;
+    let ten = textInput.toLowerCase().trim();
     let kq = document.getElementById("kq");
 
     if(ds[ten]){
